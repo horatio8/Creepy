@@ -1,19 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
-import { AuthGate } from "@/components/AuthGate";
 
 export const metadata: Metadata = {
   title: "Carlton Walker · Opposition Research Portal",
-  description: "Private research index of public coverage. Single user access.",
+  description:
+    "Research index of public coverage. Indexes original sources without republishing them.",
   robots: {
     index: false,
     follow: false,
     nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
+    googleBot: { index: false, follow: false },
   },
 };
 
@@ -43,9 +40,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>
-          <AuthGate>{children}</AuthGate>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
