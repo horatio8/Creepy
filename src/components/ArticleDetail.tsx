@@ -3,9 +3,9 @@
 import Link from "next/link";
 import type { Article } from "@/types/article";
 import { CategoryTag } from "./CategoryTag";
-import { CredibilityBadge } from "./CredibilityBadge";
 import { formatArticleDate } from "@/lib/dates";
 import { ShareBar } from "./ShareBar";
+import { SourceMark } from "./SourceMark";
 
 interface ArticleDetailProps {
   article: Article;
@@ -35,35 +35,21 @@ export function ArticleDetail({ article, related }: ArticleDetailProps) {
       </Link>
 
       <article className="mt-6 rounded-2xl border border-border bg-white p-6 shadow-card sm:p-9">
-        <div className="mb-5 flex flex-wrap items-center gap-2">
-          <CategoryTag category={article.category} />
-          <CredibilityBadge score={article.credibilityScore} />
-          <span className="text-sm text-slate">·</span>
-          <span className="text-sm text-slate">{article.publicationType}</span>
+        <div className="mb-6 flex items-center justify-between gap-3">
+          <SourceMark
+            article={article}
+            size="lg"
+            meta={`${article.publicationType} · ${date}`}
+            showDomain
+          />
+          <CategoryTag category={article.category} className="hidden sm:inline-flex" />
         </div>
+
+        <CategoryTag category={article.category} className="mb-4 sm:hidden" />
 
         <h1 className="text-balance text-3xl font-extrabold leading-tight text-navy sm:text-4xl md:text-5xl">
           {article.title}
         </h1>
-
-        <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate">
-          <span className="font-semibold text-navy">{article.source}</span>
-          <span>·</span>
-          <span>{date}</span>
-          {article.sourceUrl && (
-            <>
-              <span>·</span>
-              <a
-                href={article.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[12px] text-navy underline-offset-2 hover:underline"
-              >
-                {hostname(article.sourceUrl)}
-              </a>
-            </>
-          )}
-        </p>
 
         <div className="my-6 h-px w-full bg-border" />
 
@@ -134,13 +120,15 @@ export function ArticleDetail({ article, related }: ArticleDetailProps) {
               <Link
                 key={rel.id}
                 href={`/article/${rel.id}`}
-                className="rounded-xl border border-border bg-white p-4 shadow-card transition hover:border-navy/30 hover:shadow-cardHover"
+                className="flex flex-col gap-2 rounded-xl border border-border bg-white p-4 shadow-card transition hover:border-navy/30 hover:shadow-cardHover"
               >
+                <SourceMark
+                  article={rel}
+                  size="sm"
+                  meta={formatArticleDate(rel.datePublished)}
+                />
                 <p className="line-clamp-2 text-base font-semibold leading-snug text-navy">
                   {rel.title}
-                </p>
-                <p className="mt-1 text-sm text-slate">
-                  {rel.source} · {formatArticleDate(rel.datePublished)}
                 </p>
               </Link>
             ))}
@@ -149,14 +137,6 @@ export function ArticleDetail({ article, related }: ArticleDetailProps) {
       )}
     </div>
   );
-}
-
-function hostname(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
 }
 
 function ExternalIcon() {

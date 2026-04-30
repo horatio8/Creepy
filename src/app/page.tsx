@@ -8,6 +8,7 @@ import { PullQuote } from "@/components/PullQuote";
 import { ShareBar } from "@/components/ShareBar";
 import { Footer } from "@/components/Footer";
 import { MobileNav } from "@/components/MobileNav";
+import { ReportedBy } from "@/components/ReportedBy";
 import { getIssues } from "@/lib/issues";
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-neutral-light pb-20 md:pb-0">
       <SiteHeader variant="transparent" />
       <Hero />
+      <ReportedBy />
 
       <main>
         <section

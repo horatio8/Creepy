@@ -8,6 +8,7 @@ import { MobileNav } from "@/components/MobileNav";
 import { PullQuote } from "@/components/PullQuote";
 import { ShareBar } from "@/components/ShareBar";
 import { IssueIcon } from "@/components/IssueIcon";
+import { SourceMark } from "@/components/SourceMark";
 import { getIssue, getIssues } from "@/lib/issues";
 import { useArticles } from "@/hooks/useArticles";
 import { formatArticleDate } from "@/lib/dates";
@@ -145,11 +146,13 @@ export default function IssuePage() {
                 <Link
                   key={article.id}
                   href={`/article/${article.id}`}
-                  className="group flex flex-col gap-1 rounded-xl border border-border bg-white p-4 shadow-card transition hover:border-navy/30 hover:shadow-cardHover sm:p-5"
+                  className="group flex flex-col gap-3 rounded-xl border border-border bg-white p-4 shadow-card transition hover:border-navy/30 hover:shadow-cardHover sm:p-5"
                 >
-                  <p className="text-[12px] font-semibold uppercase tracking-wider text-slate">
-                    {article.source} · {formatArticleDate(article.datePublished)}
-                  </p>
+                  <SourceMark
+                    article={article}
+                    size="md"
+                    meta={`${article.publicationType} · ${formatArticleDate(article.datePublished)}`}
+                  />
                   <p className="text-pretty text-[16px] font-semibold leading-snug text-navy group-hover:text-alert">
                     {article.title}
                   </p>

@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { MobileNav } from "@/components/MobileNav";
 import { CategoryTag } from "@/components/CategoryTag";
 import { ExportButton } from "@/components/ExportButton";
+import { SourceMark } from "@/components/SourceMark";
 import { useArticles } from "@/hooks/useArticles";
 import { useFilterStore } from "@/store/filterStore";
 import { filterArticles, uniqueSources } from "@/lib/filterArticles";
@@ -184,17 +185,19 @@ export default function SourcesPage() {
               <li key={article.id}>
                 <Link
                   href={`/article/${article.id}`}
-                  className="group flex h-full flex-col gap-2 rounded-2xl border border-border bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-navy/30 hover:shadow-cardHover"
+                  className="group flex h-full flex-col gap-3 rounded-2xl border border-border bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-navy/30 hover:shadow-cardHover"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-start justify-between gap-3">
+                    <SourceMark
+                      article={article}
+                      size="md"
+                      meta={formatArticleDate(article.datePublished)}
+                    />
                     <CategoryTag category={article.category} />
                   </div>
                   <h3 className="text-pretty text-lg font-bold leading-snug text-navy group-hover:text-alert">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-slate">
-                    {article.source} · {formatArticleDate(article.datePublished)}
-                  </p>
                   {article.summary && (
                     <p className="line-clamp-2 text-sm text-slate">
                       {article.summary}
