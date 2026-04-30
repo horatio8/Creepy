@@ -1,0 +1,106 @@
+{
+  "issues": [
+    {
+      "slug": "family-court-finding",
+      "order": 1,
+      "icon": "gavel",
+      "accent": "#dc2626",
+      "category": "Family Court & Custody",
+      "shortLabel": "Family court findings",
+      "title": "A family court documented years of abuse",
+      "headline": "A South Carolina Family Court documented years of manipulation, deception, threats, coercion, and abuse — and the child reportedly wants no contact with Walker or his parents.",
+      "summary": "Walker centers his campaign on \"family court reform.\" The court file tells a different story. The 170-page Amended Final Order in case 2019-DR-10-1147 records years of conduct that the court characterized as the psychological and emotional abuse of a child.",
+      "keyFacts": [
+        "Charleston County Family Court, case 2019-DR-10-1147",
+        "170-page Amended Final Order from the presiding judge",
+        "Court findings include manipulation, deception, threats, coercion, and abuse over years",
+        "Court reportedly states the child wants no contact with Walker or his parents"
+      ],
+      "pullQuote": "What Carlton paints as righteous outrage, the Court recognized as the psychological and emotional abuse of a child.",
+      "pullQuoteSource": "Carolina Courier",
+      "articleIds": ["1", "2"],
+      "takeaway": "He is running on the very system that ruled against him."
+    },
+    {
+      "slug": "civil-fraud-lawsuit",
+      "order": 2,
+      "icon": "scales",
+      "accent": "#ea580c",
+      "category": "Child Support & Civil Fraud",
+      "shortLabel": "Civil fraud lawsuit",
+      "title": "Sued for fraud and dodging child support",
+      "headline": "In May 2023, the mother of Walker's child sued him alleging an intentional fraud and asset-hiding scheme to avoid more than $40,000 in fees.",
+      "summary": "The complaint, filed by Sylvia Ashley McAdams through Hopkins Law Firm, alleges the conduct was not bookkeeping carelessness but an intentional plan — including allegations that Walker's parents were complicit, taking property from him for token sums.",
+      "keyFacts": [
+        "Complaint filed May 2023 via Hopkins Law Firm",
+        "Plaintiff: Sylvia Ashley McAdams (mother of Walker's child)",
+        "Allegations: civil fraud, hiding assets, dodging child support",
+        "Reportedly more than $40,000 in fees outstanding"
+      ],
+      "pullQuote": "According to the complaint, this wasn't just Carlton's typically sloppy bookkeeping, but an intentional scheme.",
+      "pullQuoteSource": "Carolina Courier",
+      "articleIds": ["3"],
+      "takeaway": "He asks voters for trust while a court is asked to rule he hid money from his own child."
+    },
+    {
+      "slug": "fake-ai-images",
+      "order": 3,
+      "icon": "sparkle",
+      "accent": "#d97706",
+      "category": "AI-Generated Imagery",
+      "shortLabel": "Fake AI campaign images",
+      "title": "Caught using fake, AI-generated campaign images",
+      "headline": "Walker was confronted for trying to pass off AI-generated images as authentic campaign content.",
+      "summary": "Reporting documented Walker's use of artificially generated imagery in campaign materials and his attempts to present them as real — a misleading practice voters in the lowcountry should not have to tolerate.",
+      "keyFacts": [
+        "AI-generated images circulated as authentic campaign content",
+        "Confronted on the practice and continued to use the images",
+        "Pattern of misleading visual messaging"
+      ],
+      "pullQuote": "Walker Was Confronted For His Attempts To Pass Off AI Generated Images As Authentic.",
+      "pullQuoteSource": "Carolina Courier",
+      "articleIds": ["4"],
+      "takeaway": "If he will fake the photos, what else is he willing to fake?"
+    },
+    {
+      "slug": "code-violations",
+      "order": 4,
+      "icon": "warning",
+      "category": "Property & Legal Issues",
+      "accent": "#ca8a04",
+      "shortLabel": "Code violations and jail",
+      "title": "Jailed over code violations as a property owner",
+      "headline": "Walker — a North Charleston mobile home park owner — spent a night in jail over a string of code tickets, including one for letting grass grow.",
+      "summary": "The Post and Courier reported the jailing and noted Walker has been fined thousands of dollars by the City of North Charleston for cutting and trimming trees near his home. Voters are owed a candidate who follows local law.",
+      "keyFacts": [
+        "North Charleston mobile home park owner",
+        "Spent a night in jail for a string of code tickets",
+        "Fined thousands of dollars by the City for tree work near his home"
+      ],
+      "pullQuote": "Spent a night in jail earlier this month for a string of tickets.",
+      "pullQuoteSource": "Post and Courier",
+      "articleIds": ["8"],
+      "takeaway": "He cannot keep his own property in compliance — yet wants to write the laws others must follow."
+    },
+    {
+      "slug": "gil-gatch-connection",
+      "order": 5,
+      "icon": "link",
+      "accent": "#8b5cf6",
+      "category": "Political Connections",
+      "shortLabel": "The Gil Gatch connection",
+      "title": "Tied to a sitting state representative",
+      "headline": "Walker's family was previously represented in family court by sitting state Rep. Gil Gatch — the same lawmaker whose record on judges has come under scrutiny.",
+      "summary": "Reporting links the Walker family's family-court matter — heard before Judge Daniel Martin — to representation by Rep. Gil Gatch, whose own record on judicial votes has drawn coverage.",
+      "keyFacts": [
+        "Rep. Gil Gatch represented the Walker family in family court",
+        "Family court matter heard before Judge Daniel Martin",
+        "Connection raised in coverage of Gatch's judicial record"
+      ],
+      "pullQuote": "The Carlton Walker family had previously been represented by Gatch in his family court debacle.",
+      "pullQuoteSource": "MyrtleBeachSC News",
+      "articleIds": ["9"],
+      "takeaway": "His political ascent runs through the same insider network he says he is fighting."
+    }
+  ]
+}

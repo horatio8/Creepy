@@ -6,6 +6,10 @@
   color-scheme: light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   background-color: #f8fafc;
@@ -19,6 +23,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
 }
 
 * {
@@ -38,7 +44,18 @@ mark {
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.2);
+  background: rgba(220, 38, 38, 0.18);
+}
+
+@supports (text-wrap: balance) {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+@supports (text-wrap: pretty) {
+  .text-pretty {
+    text-wrap: pretty;
+  }
 }
 
 @media print {
