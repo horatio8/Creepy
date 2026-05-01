@@ -213,53 +213,85 @@ export default function HomePage() {
 
       <section id="all-sources" className="scroll-mt-12 bg-paper">
         <div className="mx-auto max-w-screen-xl px-6 py-14 sm:px-10 sm:py-20">
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-blood">
               All {sourceCount} sources
             </p>
             <p className="max-w-md font-sans text-[15px] leading-relaxed text-ash">
-              Every claim on this site links back to one of these.
+              Grouped by primary category. Every claim on this site links back
+              to one of these.
             </p>
           </div>
 
-          <ul className="divide-y divide-rule border-y border-rule">
-            {ARTICLES.map((article) => (
-              <li key={article.id}>
-                <Link
-                  href={`/${article.category}/${article.slug}/`}
-                  className="group flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:gap-6"
-                >
-                  <div className="sm:w-56 sm:shrink-0">
-                    <SourceBrand
-                      name={article.publication}
-                      domain={
-                        article.url
-                          ? new URL(article.url).hostname.replace(/^www\./, "")
-                          : null
-                      }
-                      variant="dark"
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-sans text-[16px] font-semibold leading-snug text-bone group-hover:text-blood sm:text-[17px]">
-                      {article.title}
+          <div className="space-y-12">
+            {CATEGORIES.map((category) => {
+              const inCategory = ARTICLES.filter(
+                (a) => a.category === category.slug,
+              );
+              if (inCategory.length === 0) return null;
+
+              return (
+                <section key={category.slug}>
+                  <header className="mb-5 flex flex-wrap items-baseline justify-between gap-3 border-b border-rule pb-3">
+                    <h3 className="font-sans text-[18px] font-semibold tracking-tight text-bone sm:text-[20px]">
+                      <Link
+                        href={`/${category.slug}/`}
+                        className="hover:text-blood"
+                      >
+                        {category.label}
+                      </Link>
+                    </h3>
+                    <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-ash">
+                      {inCategory.length}{" "}
+                      {inCategory.length === 1 ? "source" : "sources"}
                     </p>
-                    <p className="mt-1 font-sans text-[12px] uppercase tracking-[0.14em] text-ash">
-                      {article.type}
-                      <span className="px-2 text-rule">·</span>
-                      {article.date}
-                    </p>
-                  </div>
-                  <span
-                    aria-hidden
-                    className="font-sans text-[13px] text-ash transition-colors group-hover:text-blood"
-                  >
-                    →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  </header>
+
+                  <ul className="divide-y divide-rule">
+                    {inCategory.map((article) => (
+                      <li key={article.id}>
+                        <Link
+                          href={`/${article.category}/${article.slug}/`}
+                          className="group flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:gap-6"
+                        >
+                          <div className="sm:w-56 sm:shrink-0">
+                            <SourceBrand
+                              name={article.publication}
+                              domain={
+                                article.url
+                                  ? new URL(article.url).hostname.replace(
+                                      /^www\./,
+                                      "",
+                                    )
+                                  : null
+                              }
+                              variant="dark"
+                            />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <p className="font-sans text-[16px] font-semibold leading-snug text-bone group-hover:text-blood sm:text-[17px]">
+                              {article.title}
+                            </p>
+                            <p className="mt-1 font-sans text-[12px] uppercase tracking-[0.14em] text-ash">
+                              {article.type}
+                              <span className="px-2 text-rule">·</span>
+                              {article.date}
+                            </p>
+                          </div>
+                          <span
+                            aria-hidden
+                            className="font-sans text-[13px] text-ash transition-colors group-hover:text-blood"
+                          >
+                            →
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              );
+            })}
+          </div>
         </div>
       </section>
     </>
