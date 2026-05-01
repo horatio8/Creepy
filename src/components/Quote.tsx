@@ -22,49 +22,61 @@ export function Quote({
 }: QuoteProps) {
   const text =
     size === "lg"
-      ? "text-2xl leading-snug sm:text-3xl"
+      ? "text-[26px] leading-[1.35] sm:text-[32px]"
       : size === "sm"
-        ? "text-base leading-snug sm:text-lg"
-        : "text-xl leading-snug sm:text-[22px]";
+        ? "text-[17px] leading-[1.45] sm:text-[19px]"
+        : "text-[20px] leading-[1.4] sm:text-[23px]";
 
   const padding =
-    size === "lg" ? "p-7 sm:p-10" : size === "sm" ? "p-5 sm:p-6" : "p-6 sm:p-8";
+    size === "lg"
+      ? "p-7 pt-12 sm:p-12 sm:pt-16"
+      : size === "sm"
+        ? "p-5 pt-9 sm:p-6 sm:pt-10"
+        : "p-6 pt-11 sm:p-8 sm:pt-12";
 
   return (
     <figure
-      className={`relative overflow-hidden border border-rule bg-cream font-serif text-ink ${padding}`}
+      className={`relative overflow-hidden border border-rule bg-surface font-serif text-bone ${padding}`}
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -top-4 left-3 select-none font-display text-[140px] leading-none text-rust/30 sm:left-5"
+        className="pointer-events-none absolute -top-6 left-2 select-none font-display text-[180px] leading-none text-blood/20 sm:left-5 sm:text-[220px]"
       >
         &ldquo;
       </span>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 right-3 select-none font-display text-[180px] leading-none text-blood/10 sm:-bottom-28 sm:right-6 sm:text-[220px]"
+      >
+        &rdquo;
+      </span>
 
-      <blockquote className={`relative ${text} font-medium`}>
-        <span className="relative z-10">&ldquo;{quote}&rdquo;</span>
+      <blockquote className={`relative ${text}`}>
+        <span className="relative z-10 font-medium tracking-[0.005em]">
+          &ldquo;{quote}&rdquo;
+        </span>
       </blockquote>
 
-      <hr className="my-4 h-px w-12 border-0 bg-rust" />
+      <hr className="my-5 h-px w-12 border-0 bg-blood/80" />
 
-      <figcaption className="font-sans text-[13px] uppercase tracking-[0.12em] text-meta sm:text-[14px]">
+      <figcaption className="font-sans text-[12px] uppercase tracking-[0.18em] text-ash sm:text-[13px]">
         <cite className="not-italic">{attribution}</cite>
       </figcaption>
 
       {documentNote && (
-        <p className="mt-3 max-w-readable font-sans text-[13px] leading-relaxed text-meta">
+        <p className="mt-4 max-w-readable font-sans text-[13px] leading-relaxed text-moss">
           {documentNote}
         </p>
       )}
 
       {(href || archiveHref) && (
-        <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 font-sans text-[13px]">
+        <p className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-sans text-[13px]">
           {href && (
             <Link
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-rust underline-offset-4 hover:underline"
+              className="text-blood underline-offset-4 hover:underline"
             >
               → {hrefLabel}
             </Link>
@@ -74,7 +86,7 @@ export function Quote({
               href={archiveHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-meta underline-offset-4 hover:text-ink hover:underline"
+              className="text-moss underline-offset-4 hover:text-bone hover:underline"
             >
               (archived copy)
             </Link>

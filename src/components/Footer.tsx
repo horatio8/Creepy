@@ -3,19 +3,25 @@ import { CATEGORIES } from "@/data/categories";
 
 export function Footer() {
   return (
-    <footer className="border-t border-rule bg-paper">
-      <div className="mx-auto max-w-screen-xl px-5 py-10 sm:px-8 sm:py-14">
+    <footer className="relative border-t border-rule bg-void">
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blood/30 to-transparent"
+      />
+      <div className="mx-auto max-w-screen-xl px-5 py-12 sm:px-8 sm:py-16">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <p className="font-display text-2xl text-ink">Creepy Carlton</p>
-            <p className="mt-3 max-w-md font-serif text-[15px] leading-relaxed text-ink/80">
+            <p className="font-display text-[28px] leading-none text-bone">
+              Creepy <em className="italic text-blood">Carlton</em>
+            </p>
+            <p className="mt-4 max-w-md font-serif text-[15px] leading-relaxed text-ash">
               A sourced index of public reporting and court filings concerning
               South Carolina House District 115 candidate Carlton Walker.
             </p>
           </div>
 
           <nav aria-label="Categories" className="font-sans text-[14px]">
-            <p className="mb-3 text-[12px] uppercase tracking-[0.18em] text-meta">
+            <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-moss">
               Categories
             </p>
             <ul className="space-y-1.5">
@@ -23,7 +29,7 @@ export function Footer() {
                 <li key={c.slug}>
                   <Link
                     href={`/${c.slug}/`}
-                    className="text-ink hover:text-rust"
+                    className="text-bone hover:text-blood"
                   >
                     {c.label}
                   </Link>
@@ -33,17 +39,17 @@ export function Footer() {
           </nav>
 
           <nav aria-label="About this site" className="font-sans text-[14px]">
-            <p className="mb-3 text-[12px] uppercase tracking-[0.18em] text-meta">
+            <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-moss">
               About this site
             </p>
             <ul className="space-y-1.5">
               <li>
-                <Link href="/sources/" className="text-ink hover:text-rust">
+                <Link href="/sources/" className="text-bone hover:text-blood">
                   Sources &amp; methodology
                 </Link>
               </li>
               <li>
-                <Link href="/legal/" className="text-ink hover:text-rust">
+                <Link href="/legal/" className="text-bone hover:text-blood">
                   Legal &amp; corrections
                 </Link>
               </li>
@@ -51,7 +57,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-rule pt-6 font-sans text-[12px] leading-relaxed text-meta">
+        <div className="mt-12 border-t border-rule pt-6 font-sans text-[12px] leading-relaxed text-moss">
           <p>
             This site is not produced or authorized by any candidate or
             candidate&apos;s committee.

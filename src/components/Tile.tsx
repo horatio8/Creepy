@@ -9,31 +9,36 @@ interface TileProps {
 
 export function Tile({ article, category, count }: TileProps) {
   return (
-    <article className="flex h-full flex-col border border-rule bg-paper p-6 transition-colors hover:bg-cream/60 sm:p-7">
-      <p className="mb-4 font-sans text-[12px] uppercase tracking-[0.18em] text-rust">
+    <article className="group relative flex h-full flex-col bg-paper p-6 transition-colors duration-300 hover:bg-surface sm:p-8">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-3 top-2 select-none font-display text-[110px] leading-none text-blood/10 transition-colors duration-300 group-hover:text-blood/20 sm:text-[140px]"
+      >
+        &ldquo;
+      </span>
+
+      <p className="relative mb-5 font-sans text-[11px] uppercase tracking-[0.22em] text-blood">
         {category.label}
       </p>
 
-      <blockquote className="font-serif text-[19px] leading-snug text-ink sm:text-[21px]">
-        <span className="font-display text-rust">&ldquo;</span>
-        {article.quote}
-        <span className="font-display text-rust">&rdquo;</span>
+      <blockquote className="relative font-display text-[22px] leading-[1.25] text-bone sm:text-[26px]">
+        &ldquo;{article.quote}&rdquo;
       </blockquote>
 
-      <p className="mt-5 font-sans text-[13px] uppercase tracking-[0.12em] text-meta">
+      <p className="relative mt-6 font-sans text-[12px] uppercase tracking-[0.18em] text-ash">
         <cite className="not-italic">{article.attribution}</cite>
       </p>
 
-      <div className="mt-6 flex items-center justify-between border-t border-rule pt-4 font-sans text-[13px]">
+      <div className="relative mt-7 flex items-center justify-between border-t border-rule pt-4 font-sans text-[13px]">
         <Link
           href={`/${category.slug}/`}
-          className="text-rust underline-offset-4 hover:underline"
+          className="text-blood underline-offset-4 hover:underline"
         >
           → Read {count} {count === 1 ? "article" : "articles"}
         </Link>
         <Link
           href={`/${category.slug}/${article.slug}/`}
-          className="text-meta underline-offset-4 hover:text-ink hover:underline"
+          className="text-moss underline-offset-4 hover:text-bone hover:underline"
         >
           Source detail
         </Link>

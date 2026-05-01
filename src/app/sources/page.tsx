@@ -44,26 +44,6 @@ interface SourceRow {
   note: string;
 }
 
-function buildSourceTable(): SourceRow[] {
-  const map = new Map<string, SourceRow>();
-  for (const a of ARTICLES) {
-    const existing = map.get(a.publication);
-    if (existing) {
-      existing.count += 1;
-    } else {
-      map.set(a.publication, {
-        outlet: a.publication,
-        type: a.type,
-        count: 1,
-        note: SOURCE_NOTES[a.publication] ?? "",
-      });
-    }
-  }
-  return Array.from(map.values()).sort(
-    (a, b) => b.count - a.count || a.outlet.localeCompare(b.outlet),
-  );
-}
-
 const SOURCE_NOTES: Record<string, string> = {
   "Carolina Courier (Substack)":
     "Substack publication. Long-form, editorial in framing. Multiple cites. Treated as one voice among many; primary documents and mainstream press lead the record.",
@@ -85,6 +65,26 @@ const SOURCE_NOTES: Record<string, string> = {
   "Transparency USA":
     "Nonpartisan campaign-finance aggregator of state-level disclosures.",
 };
+
+function buildSourceTable(): SourceRow[] {
+  const map = new Map<string, SourceRow>();
+  for (const a of ARTICLES) {
+    const existing = map.get(a.publication);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      map.set(a.publication, {
+        outlet: a.publication,
+        type: a.type,
+        count: 1,
+        note: SOURCE_NOTES[a.publication] ?? "",
+      });
+    }
+  }
+  return Array.from(map.values()).sort(
+    (a, b) => b.count - a.count || a.outlet.localeCompare(b.outlet),
+  );
+}
 
 const PRIMARY_DOCS = [
   {
@@ -119,27 +119,39 @@ export default function SourcesPage() {
 
   return (
     <>
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <p className="font-sans text-[12px] uppercase tracking-[0.22em] text-meta">
-            <Link href="/" className="hover:text-rust">
+      <section className="relative overflow-hidden border-b border-rule bg-paper">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 30% 0%, rgba(200,58,58,0.08), transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-20">
+          <p className="font-sans text-[11px] uppercase tracking-[0.28em] text-ash">
+            <Link href="/" className="hover:text-blood">
               ← Home
             </Link>
           </p>
-          <h1 className="mt-4 font-display text-[34px] leading-tight text-ink sm:text-[44px]">
+          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.28em] text-blood">
+            <span aria-hidden className="mr-3">◆</span>
+            About the record
+          </p>
+          <h1 className="mt-3 font-display text-[40px] leading-[1.05] text-bone sm:text-[56px]">
             Sources &amp; methodology
           </h1>
-          <p className="mt-5 font-serif text-[19px] leading-relaxed text-ink/85">
+          <p className="mt-6 font-serif text-[19px] italic leading-relaxed text-ash">
             How this site selects sources, what the credibility scale means,
             and the full list of cited outlets and primary documents.
           </p>
         </div>
       </section>
 
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <h2 className="font-display text-[24px] text-ink">Methodology</h2>
-          <div className="mt-4 space-y-4 font-serif text-[18px] leading-relaxed text-ink/90">
+      <section className="border-b border-rule bg-void">
+        <div className="mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-16">
+          <h2 className="font-display text-[28px] text-bone">Methodology</h2>
+          <div className="mt-5 space-y-4 font-serif text-[18px] leading-relaxed text-bone/90">
             <p>
               Articles were selected based on their relation to Carlton
               Walker&apos;s 2024 candidacy for South Carolina House District 15
@@ -164,25 +176,25 @@ export default function SourcesPage() {
         </div>
       </section>
 
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <h2 className="font-display text-[24px] text-ink">
+      <section className="border-b border-rule bg-paper">
+        <div className="mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-16">
+          <h2 className="font-display text-[28px] text-bone">
             Credibility scale
           </h2>
-          <ul className="mt-5 divide-y divide-rule border border-rule bg-paper">
+          <ul className="mt-6 divide-y divide-rule border border-rule bg-surface">
             {CREDIBILITY_SCALE.map((row) => (
               <li
                 key={row.value}
-                className="grid grid-cols-[auto_1fr] gap-x-4 px-4 py-3 sm:px-5 sm:py-4"
+                className="grid grid-cols-[auto_1fr] gap-x-5 px-5 py-4 sm:px-6 sm:py-5"
               >
-                <span className="font-display text-[20px] text-rust">
+                <span className="font-display text-[28px] leading-none text-blood">
                   {row.value}
                 </span>
                 <div>
-                  <p className="font-serif text-[17px] text-ink">
+                  <p className="font-serif text-[17px] text-bone">
                     {row.label}
                   </p>
-                  <p className="mt-1 font-sans text-[13px] text-meta">
+                  <p className="mt-1 font-sans text-[13px] text-ash">
                     {row.note}
                   </p>
                 </div>
@@ -192,34 +204,34 @@ export default function SourcesPage() {
         </div>
       </section>
 
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <h2 className="font-display text-[24px] text-ink">Source list</h2>
-          <p className="mt-3 font-sans text-[13px] text-meta">
+      <section className="border-b border-rule bg-void">
+        <div className="mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-16">
+          <h2 className="font-display text-[28px] text-bone">Source list</h2>
+          <p className="mt-3 font-sans text-[13px] text-ash">
             All outlets cited on this site, in order of frequency.
           </p>
-          <div className="mt-5 overflow-x-auto border border-rule bg-paper">
+          <div className="mt-6 overflow-x-auto border border-rule bg-surface">
             <table className="w-full font-sans text-[14px]">
-              <thead className="bg-cream/60 text-left text-[12px] uppercase tracking-[0.12em] text-meta">
+              <thead className="bg-surface2 text-left text-[11px] uppercase tracking-[0.18em] text-ash">
                 <tr>
-                  <th className="px-4 py-3">Outlet</th>
-                  <th className="px-4 py-3">Type</th>
-                  <th className="px-4 py-3 text-right">Cites</th>
+                  <th className="px-5 py-3">Outlet</th>
+                  <th className="px-5 py-3">Type</th>
+                  <th className="px-5 py-3 text-right">Cites</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-rule text-ink">
+              <tbody className="divide-y divide-rule text-bone">
                 {rows.map((row) => (
                   <tr key={row.outlet} className="align-top">
-                    <td className="px-4 py-3 font-medium">
+                    <td className="px-5 py-4 font-medium">
                       {row.outlet}
                       {row.note && (
-                        <p className="mt-1 font-serif text-[14px] font-normal italic leading-snug text-meta">
+                        <p className="mt-1 font-serif text-[14px] font-normal italic leading-snug text-ash">
                           {row.note}
                         </p>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-meta">{row.type}</td>
-                    <td className="px-4 py-3 text-right tabular-nums">
+                    <td className="px-5 py-4 text-ash">{row.type}</td>
+                    <td className="px-5 py-4 text-right tabular-nums text-bone">
                       {row.count}
                     </td>
                   </tr>
@@ -230,30 +242,30 @@ export default function SourcesPage() {
         </div>
       </section>
 
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <h2 className="font-display text-[24px] text-ink">
+      <section className="border-b border-rule bg-paper">
+        <div className="mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-16">
+          <h2 className="font-display text-[28px] text-bone">
             Primary documents
           </h2>
-          <p className="mt-3 font-sans text-[13px] text-meta">
+          <p className="mt-3 font-sans text-[13px] text-ash">
             Direct links to the underlying records. These lead the site&apos;s
             authority.
           </p>
-          <ul className="mt-5 space-y-5">
+          <ul className="mt-6 space-y-6">
             {PRIMARY_DOCS.map((doc) => (
-              <li key={doc.label} className="border-t border-rule pt-4">
+              <li key={doc.label} className="border-t border-rule pt-5">
                 <a
                   href={doc.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-display text-[20px] text-ink hover:text-rust"
+                  className="font-display text-[22px] leading-snug text-bone hover:text-blood"
                 >
                   {doc.label}
                 </a>
-                <p className="mt-1 font-mono text-[12px] text-meta">
+                <p className="mt-1 font-mono text-[12px] text-moss">
                   {doc.url}
                 </p>
-                <p className="mt-2 font-serif text-[16px] leading-relaxed text-ink/85">
+                <p className="mt-3 font-serif text-[16px] leading-relaxed text-bone/85">
                   {doc.note}
                 </p>
               </li>
@@ -262,31 +274,31 @@ export default function SourcesPage() {
         </div>
       </section>
 
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <h2 className="font-display text-[24px] text-ink">
+      <section className="border-b border-rule bg-void">
+        <div className="mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-16">
+          <h2 className="font-display text-[28px] text-bone">
             From the candidate, in his own words
           </h2>
-          <p className="mt-3 font-sans text-[13px] text-meta">
+          <p className="mt-3 font-sans text-[13px] text-ash">
             We quote Walker&apos;s framing alongside the documented record so
             visitors can read both.
           </p>
-          <figure className="mt-5 border-l-2 border-rust pl-5 font-serif">
-            <blockquote className="text-[20px] italic leading-relaxed text-ink">
+          <figure className="mt-6 border-l-2 border-blood pl-6 font-serif">
+            <blockquote className="text-[22px] italic leading-relaxed text-bone sm:text-[24px]">
               &ldquo;{WALKER_OWN_STATEMENT.quote}&rdquo;
             </blockquote>
-            <figcaption className="mt-3 font-sans text-[13px] uppercase tracking-[0.12em] text-meta">
+            <figcaption className="mt-4 font-sans text-[12px] uppercase tracking-[0.18em] text-ash">
               <cite className="not-italic">
                 {WALKER_OWN_STATEMENT.attribution}
               </cite>
             </figcaption>
           </figure>
-          <p className="mt-5 font-sans text-[13px]">
+          <p className="mt-6 font-sans text-[13px]">
             <a
               href={WALKER_OWN_STATEMENT.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-rust underline-offset-4 hover:underline"
+              className="text-blood underline-offset-4 hover:underline"
             >
               → Visit votecarltonwalker.com
             </a>
@@ -294,19 +306,21 @@ export default function SourcesPage() {
         </div>
       </section>
 
-      <section>
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <h2 className="font-display text-[24px] text-ink">Corrections log</h2>
-          <p className="mt-3 font-serif text-[18px] leading-relaxed text-ink/85">
+      <section className="bg-paper">
+        <div className="mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-16">
+          <h2 className="font-display text-[28px] text-bone">
+            Corrections log
+          </h2>
+          <p className="mt-4 font-serif text-[18px] leading-relaxed text-bone/85">
             No corrections have been logged.
           </p>
-          <p className="mt-3 font-sans text-[13px] leading-relaxed text-meta">
+          <p className="mt-3 font-sans text-[13px] leading-relaxed text-moss">
             If a quote on this site is shown to be inaccurate or has been
             retracted by its original publisher, the change and date will be
-            recorded here. To request a correction, see{" "}
+            recorded here. The corrections policy is on{" "}
             <Link
               href="/legal/"
-              className="text-rust underline-offset-4 hover:underline"
+              className="text-blood underline-offset-4 hover:underline"
             >
               /legal
             </Link>

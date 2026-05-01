@@ -10,45 +10,52 @@ export function Header() {
   const navCategories = CATEGORIES.filter((c) => c.showInNav);
 
   return (
-    <header className="border-b border-rule bg-paper">
+    <header className="relative border-b border-rule bg-paper/85 backdrop-blur-sm">
+      <span
+        aria-hidden
+        className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blood/40 to-transparent"
+      />
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-5 py-5 sm:px-8">
         <Link
           href="/"
-          className="font-display text-[28px] leading-none text-ink hover:text-rust sm:text-[34px]"
           aria-label="Creepy Carlton — home"
+          className="group flex items-baseline gap-2 font-display leading-none"
         >
-          Creepy Carlton
+          <span aria-hidden className="h-2 w-2 rounded-full bg-blood/80 self-center group-hover:bg-blood" />
+          <span className="haunt text-[26px] tracking-tight text-bone group-hover:text-blood sm:text-[32px]">
+            Creepy <em className="font-normal italic text-blood">Carlton</em>
+          </span>
         </Link>
-        <nav className="hidden items-baseline gap-5 font-sans text-[14px] tracking-wide text-ink md:flex">
+        <nav className="hidden items-baseline gap-5 font-sans text-[13px] uppercase tracking-[0.14em] text-ash md:flex">
           {navCategories.map((c) => (
             <Link
               key={c.slug}
               href={`/${c.slug}/`}
-              className="hover:text-rust"
+              className="hover:text-bone"
             >
               {c.navLabel}
             </Link>
           ))}
           <span aria-hidden className="h-3 w-px bg-rule" />
           {NAV_TAIL.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-rust">
+            <Link key={n.href} href={n.href} className="hover:text-bone">
               {n.label}
             </Link>
           ))}
         </nav>
         <nav
           aria-label="Mobile sections"
-          className="font-sans text-[13px] text-meta md:hidden"
+          className="font-sans text-[12px] uppercase tracking-[0.14em] text-ash md:hidden"
         >
-          <Link href="#categories" className="hover:text-rust">
+          <Link href="/#categories" className="hover:text-bone">
             Categories
           </Link>
           <span className="px-2 text-rule">·</span>
-          <Link href="/sources/" className="hover:text-rust">
+          <Link href="/sources/" className="hover:text-bone">
             Sources
           </Link>
           <span className="px-2 text-rule">·</span>
-          <Link href="/legal/" className="hover:text-rust">
+          <Link href="/legal/" className="hover:text-bone">
             Legal
           </Link>
         </nav>

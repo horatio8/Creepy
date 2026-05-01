@@ -31,24 +31,36 @@ export default function CategoryPage({
 
   return (
     <>
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
-          <p className="font-sans text-[12px] uppercase tracking-[0.22em] text-meta">
-            <Link href="/" className="hover:text-rust">
+      <section className="relative overflow-hidden border-b border-rule bg-paper">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 20% 0%, rgba(200,58,58,0.07), transparent 55%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-20">
+          <p className="font-sans text-[11px] uppercase tracking-[0.28em] text-ash">
+            <Link href="/" className="hover:text-blood">
               ← All categories
             </Link>
           </p>
-          <h1 className="mt-4 font-display text-[34px] leading-[1.1] text-ink sm:text-[44px]">
+          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.28em] text-blood">
+            <span aria-hidden className="mr-3">◆</span>
+            Category {String(CATEGORIES.findIndex((c) => c.slug === cat.slug) + 1).padStart(2, "0")}
+          </p>
+          <h1 className="mt-3 font-display text-[40px] leading-[1.05] text-bone sm:text-[56px]">
             {cat.label}
           </h1>
-          <p className="mt-5 font-serif text-[18px] leading-relaxed text-ink/85">
+          <p className="mt-6 font-serif text-[18px] italic leading-relaxed text-ash">
             {cat.contextLine}
           </p>
         </div>
       </section>
 
-      <section>
-        <div className="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-16">
+      <section className="bg-void">
+        <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
           <ul className="space-y-12">
             {articles.map((article) => (
               <li key={article.id}>
@@ -69,12 +81,12 @@ export default function CategoryPage({
             ))}
           </ul>
 
-          <p className="mt-12 max-w-readable border-t border-rule pt-6 font-sans text-[13px] leading-relaxed text-meta">
+          <p className="mt-14 max-w-readable border-t border-rule pt-6 font-sans text-[13px] leading-relaxed text-moss">
             All claims on this page are quoted directly from the linked sources.
-            To request a correction, see{" "}
+            To read the corrections policy, see{" "}
             <Link
               href="/legal/"
-              className="text-rust underline-offset-4 hover:underline"
+              className="text-blood underline-offset-4 hover:underline"
             >
               /legal
             </Link>
@@ -112,15 +124,15 @@ function ArticleCard({
   archiveUrl?: string;
 }) {
   return (
-    <article className="border-t border-rule pt-8">
+    <article className="border-t border-rule pt-10">
       <Link
         href={href}
-        className="group block font-display text-[26px] leading-tight text-ink hover:text-rust sm:text-[30px]"
+        className="group block font-display text-[28px] leading-[1.15] text-bone hover:text-blood sm:text-[32px]"
       >
         {title}
       </Link>
 
-      <p className="mt-3 font-sans text-[13px] uppercase tracking-[0.12em] text-meta">
+      <p className="mt-3 font-sans text-[12px] uppercase tracking-[0.16em] text-ash">
         {publication}
         <span className="px-2 text-rule">·</span>
         {type}
@@ -145,7 +157,7 @@ function ArticleCard({
       <p className="mt-3 font-sans text-[13px]">
         <Link
           href={href}
-          className="text-meta underline-offset-4 hover:text-ink hover:underline"
+          className="text-moss underline-offset-4 hover:text-bone hover:underline"
         >
           Source detail →
         </Link>
