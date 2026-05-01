@@ -14,11 +14,14 @@ export function Header() {
         <Link
           href="/"
           aria-label="Creepy Carlton — home"
-          className="group flex items-baseline gap-2 font-display leading-none"
+          className="group flex items-baseline gap-2 font-gothic leading-none"
         >
-          <span aria-hidden className="h-2 w-2 rounded-full bg-blood/80 self-center group-hover:bg-blood" />
-          <span className="haunt text-[26px] tracking-tight text-bone group-hover:text-blood sm:text-[32px]">
-            Creepy <em className="font-normal italic text-blood">Carlton</em>
+          <span
+            aria-hidden
+            className="h-2 w-2 self-center rounded-full bg-blood/80 group-hover:bg-blood"
+          />
+          <span className="text-[26px] tracking-tight text-bone group-hover:text-blood sm:text-[30px]">
+            Creepy <em className="italic text-blood">Carlton</em>
           </span>
         </Link>
         <nav className="hidden items-baseline gap-5 font-sans text-[13px] uppercase tracking-[0.14em] text-ash md:flex">

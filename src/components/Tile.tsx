@@ -12,16 +12,16 @@ export function Tile({ article, category, count }: TileProps) {
     <article className="group relative flex h-full flex-col bg-paper p-6 transition-colors duration-300 hover:bg-surface sm:p-8">
       <span
         aria-hidden
-        className="pointer-events-none absolute right-3 top-2 select-none font-display text-[110px] leading-none text-blood/10 transition-colors duration-300 group-hover:text-blood/20 sm:text-[140px]"
+        className="pointer-events-none absolute right-3 top-2 select-none font-gothic text-[110px] leading-none text-blood/15 transition-colors duration-300 group-hover:text-blood/25 sm:text-[140px]"
       >
         &ldquo;
       </span>
 
-      <p className="relative mb-5 font-sans text-[11px] uppercase tracking-[0.22em] text-blood">
+      <p className="relative mb-5 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-blood">
         {category.label}
       </p>
 
-      <blockquote className="relative font-display text-[22px] leading-[1.25] text-bone sm:text-[26px]">
+      <blockquote className="relative font-serif text-[19px] leading-[1.4] text-bone sm:text-[21px]">
         &ldquo;{article.quote}&rdquo;
       </blockquote>
 

@@ -11,7 +11,7 @@ export function Footer() {
       <div className="mx-auto max-w-screen-xl px-5 py-12 sm:px-8 sm:py-16">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
-            <p className="font-display text-[28px] leading-none text-bone">
+            <p className="font-gothic text-[28px] leading-none text-bone">
               Creepy <em className="italic text-blood">Carlton</em>
             </p>
             <p className="mt-4 max-w-md font-serif text-[15px] leading-relaxed text-ash">

@@ -40,13 +40,13 @@ export function Quote({
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -top-6 left-2 select-none font-display text-[180px] leading-none text-blood/20 sm:left-5 sm:text-[220px]"
+        className="pointer-events-none absolute -top-6 left-2 select-none font-gothic text-[180px] leading-none text-blood/20 sm:left-5 sm:text-[220px]"
       >
         &ldquo;
       </span>
       <span
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 right-3 select-none font-display text-[180px] leading-none text-blood/10 sm:-bottom-28 sm:right-6 sm:text-[220px]"
+        className="pointer-events-none absolute -bottom-24 right-3 select-none font-gothic text-[180px] leading-none text-blood/10 sm:-bottom-28 sm:right-6 sm:text-[220px]"
       >
         &rdquo;
       </span>
