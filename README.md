@@ -55,10 +55,6 @@ See the brief, §11.
       `archiveUrl` field on each article populated.
 - [ ] District 115 / District 15 clarification visible above the fold and
       on /legal.
-- [ ] Publisher name set in `src/components/Footer.tsx` and
-      `src/app/legal/page.tsx`. Replace `[Publisher Name]` placeholders.
-- [ ] Working contact email at `corrections@creepycarlton.com` (or replace
-      throughout).
 - [ ] South Carolina-licensed lawyer review of homepage, /sources,
       /custody, and /fraud.
 

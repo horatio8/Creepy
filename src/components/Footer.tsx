@@ -44,16 +44,8 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/legal/" className="text-ink hover:text-rust">
-                  Legal, corrections &amp; takedown
+                  Legal &amp; corrections
                 </Link>
-              </li>
-              <li>
-                <a
-                  href="mailto:corrections@creepycarlton.com"
-                  className="text-ink hover:text-rust"
-                >
-                  corrections@creepycarlton.com
-                </a>
               </li>
             </ul>
           </nav>
@@ -61,14 +53,7 @@ export function Footer() {
 
         <div className="mt-10 border-t border-rule pt-6 font-sans text-[12px] leading-relaxed text-meta">
           <p>
-            Published by [Publisher Name]. Contact:{" "}
-            <a
-              href="mailto:corrections@creepycarlton.com"
-              className="hover:text-ink"
-            >
-              corrections@creepycarlton.com
-            </a>
-            . This site is not produced or authorized by any candidate or
+            This site is not produced or authorized by any candidate or
             candidate&apos;s committee.
           </p>
           <p className="mt-2">

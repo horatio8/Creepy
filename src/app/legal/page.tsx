@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Legal, corrections & takedown",
+  title: "Legal & corrections",
   description:
-    "Disclaimers, the corrections and takedown policy, and the editorial rules that govern every quotation on this site.",
+    "Disclaimers, the corrections policy, and the editorial rules that govern every quotation on this site.",
 };
 
 export default function LegalPage() {
@@ -18,11 +18,11 @@ export default function LegalPage() {
             </Link>
           </p>
           <h1 className="mt-4 font-display text-[34px] leading-tight text-ink sm:text-[44px]">
-            Legal, corrections &amp; takedown
+            Legal &amp; corrections
           </h1>
           <p className="mt-5 font-serif text-[19px] leading-relaxed text-ink/85">
-            The editorial rules that govern this site, who runs it, and how to
-            request a correction.
+            The editorial rules that govern this site and the policy for
+            correcting quotations shown to be inaccurate.
           </p>
         </div>
       </section>
@@ -30,21 +30,9 @@ export default function LegalPage() {
       <section className="border-b border-rule">
         <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
           <h2 className="font-display text-[24px] text-ink">
-            Publisher disclosure
+            Disclosure
           </h2>
           <p className="mt-4 font-serif text-[18px] leading-relaxed text-ink/90">
-            This site is published by{" "}
-            <strong className="font-semibold">[Publisher Name]</strong>.
-            Contact:{" "}
-            <a
-              href="mailto:corrections@creepycarlton.com"
-              className="text-rust underline-offset-4 hover:underline"
-            >
-              corrections@creepycarlton.com
-            </a>
-            .
-          </p>
-          <p className="mt-3 font-serif text-[18px] leading-relaxed text-ink/90">
             This site is not produced or authorized by any candidate or
             candidate&apos;s committee. If, in the future, this site is
             published by a registered political committee, the appropriate
@@ -62,30 +50,20 @@ export default function LegalPage() {
       <section className="border-b border-rule">
         <div className="mx-auto max-w-readable px-5 py-10 sm:px-8 sm:py-14">
           <h2 className="font-display text-[24px] text-ink">
-            Corrections &amp; takedown policy
+            Corrections policy
           </h2>
-          <div className="mt-5 border-l-2 border-rust pl-5">
-            <p className="font-serif text-[19px] italic leading-relaxed text-ink">
-              If you are Mr. Walker or his representative and believe a
-              quotation on this site misrepresents a source, email{" "}
-              <a
-                href="mailto:corrections@creepycarlton.com"
-                className="not-italic text-rust underline-offset-4 hover:underline"
-              >
-                corrections@creepycarlton.com
-              </a>
-              . We will respond within 5 business days. If a quotation is shown
-              to be inaccurate or has been retracted by its original publisher,
-              we will correct or remove it and log the change on our{" "}
-              <Link
-                href="/sources/"
-                className="not-italic text-rust underline-offset-4 hover:underline"
-              >
-                Sources &amp; Methodology
-              </Link>{" "}
-              page.
-            </p>
-          </div>
+          <p className="mt-4 font-serif text-[18px] leading-relaxed text-ink/90">
+            If a quotation on this site is shown to be inaccurate, or has been
+            retracted by its original publisher, it will be corrected or
+            removed and the change will be logged on our{" "}
+            <Link
+              href="/sources/"
+              className="text-rust underline-offset-4 hover:underline"
+            >
+              Sources &amp; Methodology
+            </Link>{" "}
+            page.
+          </p>
         </div>
       </section>
 
