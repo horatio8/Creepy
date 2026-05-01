@@ -1,63 +1,70 @@
-# Carlton Walker Opposition Research Portal
+# Creepy Carlton
 
-Research index that aggregates **links to** publicly available coverage of
-Carlton Walker. The site does not host or republish third-party content; it
-indexes and links to original sources.
+A static, sourced index of public reporting and court filings concerning South
+Carolina House District 115 candidate Carlton Walker.
+
+The site is built per the editorial brief delivered to the project. The
+defining rule: every substantive claim about Walker on this site appears
+inside `""` quotation marks and is attributed to a named source on the same
+screen. The site does not paraphrase or summarize.
 
 ## Stack
 
-- Next.js 14 (App Router) + TypeScript
-- Tailwind CSS
-- React Query (cache layer)
-- Zustand (filter state)
-- Static `articles.json` for the index
+- Next.js 14 (App Router) with `output: "export"` — fully static HTML
+- TypeScript, Tailwind CSS
+- Google Fonts: Marcellus (display), Source Serif 4 (body), Inter (sans)
+- No database, no analytics, no client-side state, no images of Walker
 
-## Local development
+## Develop
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+## Build
+
+```bash
+npm run build
+```
+
+Output is written to `out/` as static HTML, ready to host on Vercel,
+Netlify, S3, or any static host.
+
+## Editorial rules
+
+Live at [/legal](/legal):
+
+1. Quotes are reproduced verbatim. Ellipses (`…`) are visible.
+2. No two quotes are concatenated to imply a single statement.
+3. No quote appears without its source named on the same screen.
+4. The site does not assert in its own voice that Walker did, said, or is
+   anything beyond facts about his candidacy.
+5. Topics are framed as topics, not verdicts.
+6. No imagery of Walker.
+
+The `<Quote>` component takes both `quote` and `attribution` as required
+props — you cannot render one without the other.
+
+## Pre-launch checklist
+
+See the brief, §11.
+
+- [ ] Every quote verified word-for-word against its original source.
+- [ ] Every source URL captured to archive.org and archive.today; the
+      `archiveUrl` field on each article populated.
+- [ ] District 115 / District 15 clarification visible above the fold and
+      on /legal.
+- [ ] Publisher name set in `src/components/Footer.tsx` and
+      `src/app/legal/page.tsx`. Replace `[Publisher Name]` placeholders.
+- [ ] Working contact email at `corrections@creepycarlton.com` (or replace
+      throughout).
+- [ ] South Carolina-licensed lawyer review of homepage, /sources,
+      /custody, and /fraud.
 
 ## Adding articles
 
-Append entries to `src/data/articles.json` using the existing schema:
-
-```jsonc
-{
-  "id": "16",
-  "title": "...",
-  "source": "...",
-  "sourceUrl": "https://...",
-  "publicationType": "Investigation",
-  "datePublished": "2024-09",
-  "articleUrl": "https://...",
-  "category": "Election Coverage",
-  "credibilityScore": 4,
-  "summary": "...",
-  "keyQuote": "..."
-}
-```
-
-Categories must match those listed in `src/lib/categories.ts`.
-
-## Scripts
-
-- `npm run dev` — start the dev server
-- `npm run build` — production build
-- `npm run start` — serve a built app
-- `npm run lint` — run Next.js lint
-- `npm run typecheck` — TypeScript only check
-
-## Deployment
-
-1. Push this repository to GitHub.
-2. Import the repo into Vercel.
-3. Deploy. `robots.txt` blocks all crawlers; the layout sets `noindex`.
-
-## Privacy
-
-- Notes are stored in browser `localStorage` only and never leave the device.
-- No analytics or tracking scripts are included.
+Append to `src/data/articles.ts`. Required fields: `id`, `slug`,
+`category`, `title`, `source`, `publication`, `type`, `date`, `year`,
+`url`, `credibility`, `quote`, `attribution`, `documentNote`. Categories
+are defined in `src/data/categories.ts`.

@@ -1,58 +1,83 @@
-"use client";
-
 import Link from "next/link";
+import { CATEGORIES } from "@/data/categories";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-white">
-      <div className="mx-auto max-w-screen-xl px-5 py-10 sm:px-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+    <footer className="border-t border-rule bg-paper">
+      <div className="mx-auto max-w-screen-xl px-5 py-10 sm:px-8 sm:py-14">
+        <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <p className="text-h3 text-navy">The Walker Record</p>
-            <p className="mt-1 max-w-md text-sm text-slate">
-              An independent voter information project. Every claim links to a
-              public source. No content from those sources is hosted or
-              republished here.
+            <p className="font-display text-2xl text-ink">Creepy Carlton</p>
+            <p className="mt-3 max-w-md font-serif text-[15px] leading-relaxed text-ink/80">
+              A sourced index of public reporting and court filings concerning
+              South Carolina House District 115 candidate Carlton Walker.
             </p>
           </div>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link
-              href="/"
-              className="text-sm font-medium text-slate hover:text-navy"
-            >
-              Home
-            </Link>
-            <Link
-              href="/#issues"
-              className="text-sm font-medium text-slate hover:text-navy"
-            >
-              The Issues
-            </Link>
-            <Link
-              href="/sources"
-              className="text-sm font-medium text-slate hover:text-navy"
-            >
-              Sources
-            </Link>
-            <Link
-              href="/#share"
-              className="text-sm font-medium text-slate hover:text-navy"
-            >
-              Share
-            </Link>
+
+          <nav aria-label="Categories" className="font-sans text-[14px]">
+            <p className="mb-3 text-[12px] uppercase tracking-[0.18em] text-meta">
+              Categories
+            </p>
+            <ul className="space-y-1.5">
+              {CATEGORIES.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/${c.slug}/`}
+                    className="text-ink hover:text-rust"
+                  >
+                    {c.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="About this site" className="font-sans text-[14px]">
+            <p className="mb-3 text-[12px] uppercase tracking-[0.18em] text-meta">
+              About this site
+            </p>
+            <ul className="space-y-1.5">
+              <li>
+                <Link href="/sources/" className="text-ink hover:text-rust">
+                  Sources &amp; methodology
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal/" className="text-ink hover:text-rust">
+                  Legal, corrections &amp; takedown
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:corrections@creepycarlton.com"
+                  className="text-ink hover:text-rust"
+                >
+                  corrections@creepycarlton.com
+                </a>
+              </li>
+            </ul>
           </nav>
         </div>
-        <div className="mt-8 border-t border-border pt-5 text-[11px] leading-relaxed text-slate">
+
+        <div className="mt-10 border-t border-rule pt-6 font-sans text-[12px] leading-relaxed text-meta">
           <p>
-            Information presented here is drawn from publicly available
-            reporting and public records. Allegations described in pending or
-            decided court matters are characterized as reported in those
-            sources. Outbound links open the original publishers; this site
-            does not host or modify their content.
+            Published by [Publisher Name]. Contact:{" "}
+            <a
+              href="mailto:corrections@creepycarlton.com"
+              className="hover:text-ink"
+            >
+              corrections@creepycarlton.com
+            </a>
+            . This site is not produced or authorized by any candidate or
+            candidate&apos;s committee.
           </p>
           <p className="mt-2">
-            © {new Date().getFullYear()} The Walker Record · Not produced or
-            authorized by any candidate or candidate&apos;s committee.
+            &ldquo;Creepy Carlton&rdquo; is the editorial title of this
+            research compilation. The substantive claims on this site are
+            direct quotations from the named sources.
+          </p>
+          <p className="mt-2">
+            © {new Date().getFullYear()} Creepy Carlton.
           </p>
         </div>
       </div>

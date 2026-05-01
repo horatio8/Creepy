@@ -1,22 +1,25 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { MobileBottomBar } from "@/components/MobileBottomBar";
 
-const TITLE = "Before you vote for Carlton Walker, read the record.";
+const TITLE =
+  "Creepy Carlton — A sourced index of public reporting on Carlton Walker";
 const DESCRIPTION =
-  "An independent voter brief on Carlton Walker, candidate for SC House District 115. Five issues, fifteen sources, all linked to the originals.";
+  "Carlton Walker is a candidate for South Carolina House District 115. This site is a sourced index of public reporting and court filings concerning his prior 2024 run for District 15 and the underlying personal history that surfaced during it.";
 
 export const metadata: Metadata = {
   title: {
     default: TITLE,
-    template: "%s · The Walker Record",
+    template: "%s · Creepy Carlton",
   },
   description: DESCRIPTION,
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
-    siteName: "The Walker Record",
+    siteName: "Creepy Carlton",
   },
   twitter: {
     card: "summary_large_image",
@@ -26,14 +29,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1a1f36",
+  themeColor: "#f5f1e8",
 };
 
 export default function RootLayout({
@@ -51,12 +53,15 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body>
-        <Providers>{children}</Providers>
+      <body className="pb-16 md:pb-0">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+        <MobileBottomBar />
       </body>
     </html>
   );
