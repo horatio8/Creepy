@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { CATEGORIES } from "@/data/categories";
 
-const NAV_TAIL = [
-  { href: "/sources/", label: "Sources" },
-  { href: "/legal/", label: "Legal" },
-];
-
 export function Header() {
   const navCategories = CATEGORIES.filter((c) => c.showInNav);
 
@@ -36,12 +31,6 @@ export function Header() {
               {c.navLabel}
             </Link>
           ))}
-          <span aria-hidden className="h-3 w-px bg-rule" />
-          {NAV_TAIL.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-bone">
-              {n.label}
-            </Link>
-          ))}
         </nav>
         <nav
           aria-label="Mobile sections"
@@ -49,14 +38,6 @@ export function Header() {
         >
           <Link href="/#categories" className="hover:text-bone">
             Categories
-          </Link>
-          <span className="px-2 text-rule">·</span>
-          <Link href="/sources/" className="hover:text-bone">
-            Sources
-          </Link>
-          <span className="px-2 text-rule">·</span>
-          <Link href="/legal/" className="hover:text-bone">
-            Legal
           </Link>
         </nav>
       </div>

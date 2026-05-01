@@ -71,7 +71,7 @@ export default function ArticlePage({
             <span className="px-2 text-rule">·</span>
             {article.date}
             <span className="px-2 text-rule">·</span>
-            <span title="Credibility rating, 1–5. See /sources for the scale.">
+            <span title="Credibility rating, 1–5.">
               Credibility {article.credibility}/5
             </span>
           </p>
@@ -94,15 +94,7 @@ export default function ArticlePage({
             <p>
               The text inside the quotation marks above is reproduced verbatim
               from the source named beneath it. This site does not paraphrase,
-              summarize, or characterize the source&apos;s content. The
-              corrections policy is on{" "}
-              <Link
-                href="/legal/"
-                className="text-blood underline-offset-4 hover:underline"
-              >
-                /legal
-              </Link>
-              .
+              summarize, or characterize the source&apos;s content.
             </p>
           </div>
         </div>

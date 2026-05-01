@@ -136,16 +136,7 @@ export default function HomePage() {
             Every quotation on this site is reproduced verbatim from the named
             source. Links to the original articles and court filings are
             provided beneath each entry. The site does not characterize
-            Mr. Walker; it presents what other sources have said. If a quote is
-            later corrected or retracted by its publisher, this site will
-            reflect that update on the{" "}
-            <Link
-              href="/sources/"
-              className="text-blood underline-offset-4 hover:underline"
-            >
-              Sources &amp; Methodology
-            </Link>{" "}
-            page.
+            Mr. Walker; it presents what other sources have said.
           </p>
         </div>
       </section>
@@ -168,14 +159,7 @@ export default function HomePage() {
           </figure>
           <p className="mt-6 font-sans text-[13px] leading-relaxed text-moss">
             We reproduce the candidate&apos;s framing in his own words alongside
-            the documented record. See{" "}
-            <Link
-              href="/sources/"
-              className="text-blood underline-offset-4 hover:underline"
-            >
-              Sources &amp; Methodology
-            </Link>{" "}
-            for the full statement and context.
+            the documented record.
           </p>
         </div>
       </section>

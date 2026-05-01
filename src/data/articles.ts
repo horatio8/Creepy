@@ -297,11 +297,3 @@ export const ARTICLES: Article[] = [
   },
 ];
 
-// Walker's own statement, kept on /sources to present the subject's framing in
-// his own words alongside the documented record.
-export const WALKER_OWN_STATEMENT = {
-  quote:
-    "After I stopped a judge from being promoted in 2024, that judge retaliated by taking away my right to see my daughter.",
-  attribution: "votecarltonwalker.com (Walker's campaign site)",
-  url: "https://votecarltonwalker.com",
-};

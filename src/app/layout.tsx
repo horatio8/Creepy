@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { MobileBottomBar } from "@/components/MobileBottomBar";
 
 const TITLE =
   "Creepy Carlton — A sourced index of public reporting on Carlton Walker";
@@ -57,11 +56,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="pb-16 md:pb-0">
+      <body>
         <Header />
         <main>{children}</main>
         <Footer />
-        <MobileBottomBar />
       </body>
     </html>
   );

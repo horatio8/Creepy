@@ -82,15 +82,8 @@ export default function CategoryPage({
           </ul>
 
           <p className="mt-14 max-w-readable border-t border-rule pt-6 font-sans text-[13px] leading-relaxed text-moss">
-            All claims on this page are quoted directly from the linked sources.
-            To read the corrections policy, see{" "}
-            <Link
-              href="/legal/"
-              className="text-blood underline-offset-4 hover:underline"
-            >
-              /legal
-            </Link>
-            .
+            All claims on this page are quoted directly from the linked
+            sources.
           </p>
         </div>
       </section>
@@ -139,7 +132,7 @@ function ArticleCard({
         <span className="px-2 text-rule">·</span>
         {date}
         <span className="px-2 text-rule">·</span>
-        <span title="Credibility rating, 1–5. See /sources for the scale.">
+        <span title="Credibility rating, 1–5.">
           Credibility {credibility}/5
         </span>
       </p>

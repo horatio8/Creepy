@@ -12,7 +12,8 @@ screen. The site does not paraphrase or summarize.
 
 - Next.js 14 (App Router) with `output: "export"` — fully static HTML
 - TypeScript, Tailwind CSS
-- Google Fonts: Marcellus (display), Source Serif 4 (body), Inter (sans)
+- Google Fonts: Cormorant Garamond (display), Source Serif 4 (body),
+  Inter (sans)
 - No database, no analytics, no client-side state, no images of Walker
 
 ## Develop
@@ -33,8 +34,6 @@ Netlify, S3, or any static host.
 
 ## Editorial rules
 
-Live at [/legal](/legal):
-
 1. Quotes are reproduced verbatim. Ellipses (`…`) are visible.
 2. No two quotes are concatenated to imply a single statement.
 3. No quote appears without its source named on the same screen.
@@ -48,15 +47,12 @@ props — you cannot render one without the other.
 
 ## Pre-launch checklist
 
-See the brief, §11.
-
 - [ ] Every quote verified word-for-word against its original source.
 - [ ] Every source URL captured to archive.org and archive.today; the
       `archiveUrl` field on each article populated.
-- [ ] District 115 / District 15 clarification visible above the fold and
-      on /legal.
-- [ ] South Carolina-licensed lawyer review of homepage, /sources,
-      /custody, and /fraud.
+- [ ] District 115 / District 15 clarification visible above the fold.
+- [ ] South Carolina-licensed lawyer review of the homepage, /custody,
+      and /fraud.
 
 ## Adding articles
 
