@@ -3,7 +3,7 @@ import { Tile } from "@/components/Tile";
 import { SourceBrand } from "@/components/SourceBrand";
 import { CATEGORIES } from "@/data/categories";
 import { ARTICLES } from "@/data/articles";
-import { uniquePublications } from "@/lib/sources";
+import { getDomain, uniquePublications } from "@/lib/sources";
 import type { CategorySlug } from "@/types/content";
 
 const TILE_ARTICLE_IDS: Record<CategorySlug, string> = {
@@ -257,14 +257,7 @@ export default function HomePage() {
                           <div className="sm:w-56 sm:shrink-0">
                             <SourceBrand
                               name={article.publication}
-                              domain={
-                                article.url
-                                  ? new URL(article.url).hostname.replace(
-                                      /^www\./,
-                                      "",
-                                    )
-                                  : null
-                              }
+                              domain={getDomain(article.url)}
                               variant="dark"
                             />
                           </div>

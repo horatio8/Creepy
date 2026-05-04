@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Quote } from "@/components/Quote";
 import { CATEGORIES, getCategory } from "@/data/categories";
 import { getArticlesByCategory } from "@/lib/articles";
-import type { CategorySlug } from "@/types/content";
+import { resolveArticleLink } from "@/lib/sources";
+import type { Article, CategorySlug } from "@/types/content";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
@@ -37,7 +38,7 @@ export default function CategoryPage({
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 20% 0%, rgba(200,58,58,0.07), transparent 55%)",
+              "radial-gradient(ellipse at 20% 0%, rgba(227,80,90,0.08), transparent 55%)",
           }}
         />
         <div className="relative mx-auto max-w-readable px-5 py-12 sm:px-8 sm:py-20">
@@ -46,11 +47,14 @@ export default function CategoryPage({
               ← All categories
             </Link>
           </p>
-          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.28em] text-blood">
+          <p className="mt-6 font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-blood">
             <span aria-hidden className="mr-3">◆</span>
-            Category {String(CATEGORIES.findIndex((c) => c.slug === cat.slug) + 1).padStart(2, "0")}
+            Category{" "}
+            {String(
+              CATEGORIES.findIndex((c) => c.slug === cat.slug) + 1,
+            ).padStart(2, "0")}
           </p>
-          <h1 className="mt-3 font-display text-[40px] leading-[1.05] text-bone sm:text-[56px]">
+          <h1 className="mt-3 font-display text-[40px] font-extrabold leading-[1.05] tracking-[-0.01em] text-bone sm:text-[56px]">
             {cat.label}
           </h1>
           <p className="mt-6 font-serif text-[18px] italic leading-relaxed text-ash">
@@ -65,17 +69,8 @@ export default function CategoryPage({
             {articles.map((article) => (
               <li key={article.id}>
                 <ArticleCard
-                  href={`/${cat.slug}/${article.slug}/`}
-                  title={article.title}
-                  publication={article.publication}
-                  type={article.type}
-                  date={article.date}
-                  credibility={article.credibility}
-                  quote={article.quote}
-                  attribution={article.attribution}
-                  documentNote={article.documentNote}
-                  externalUrl={article.url}
-                  archiveUrl={article.archiveUrl}
+                  article={article}
+                  detailHref={`/${cat.slug}/${article.slug}/`}
                 />
               </li>
             ))}
@@ -92,64 +87,54 @@ export default function CategoryPage({
 }
 
 function ArticleCard({
-  href,
-  title,
-  publication,
-  type,
-  date,
-  credibility,
-  quote,
-  attribution,
-  documentNote,
-  externalUrl,
-  archiveUrl,
+  article,
+  detailHref,
 }: {
-  href: string;
-  title: string;
-  publication: string;
-  type: string;
-  date: string;
-  credibility: number;
-  quote: string;
-  attribution: string;
-  documentNote: string;
-  externalUrl?: string;
-  archiveUrl?: string;
+  article: Article;
+  detailHref: string;
 }) {
+  const link = resolveArticleLink(article);
   return (
     <article className="border-t border-rule pt-10">
       <Link
-        href={href}
-        className="group block font-display text-[28px] leading-[1.15] text-bone hover:text-blood sm:text-[32px]"
+        href={detailHref}
+        className="group block font-display text-[28px] font-extrabold leading-[1.15] tracking-[-0.01em] text-bone hover:text-blood sm:text-[32px]"
       >
-        {title}
+        {article.title}
       </Link>
 
       <p className="mt-3 font-sans text-[12px] uppercase tracking-[0.16em] text-ash">
-        {publication}
+        {article.publication}
         <span className="px-2 text-rule">·</span>
-        {type}
+        {article.type}
         <span className="px-2 text-rule">·</span>
-        {date}
+        {article.date}
         <span className="px-2 text-rule">·</span>
         <span title="Credibility rating, 1–5.">
-          Credibility {credibility}/5
+          Credibility {article.credibility}/5
         </span>
       </p>
 
       <div className="mt-5">
         <Quote
-          quote={quote}
-          attribution={attribution}
-          documentNote={documentNote}
-          href={externalUrl || undefined}
-          archiveHref={archiveUrl}
+          quote={article.quote}
+          attribution={article.attribution}
+          documentNote={article.documentNote}
+          href={link.href}
+          hrefLabel={link.label}
+          archiveHref={article.archiveUrl}
         />
       </div>
 
+      {link.note && (
+        <p className="mt-3 font-sans text-[13px] leading-relaxed text-ash">
+          {link.note}
+        </p>
+      )}
+
       <p className="mt-3 font-sans text-[13px]">
         <Link
-          href={href}
+          href={detailHref}
           className="text-moss underline-offset-4 hover:text-bone hover:underline"
         >
           Source detail →

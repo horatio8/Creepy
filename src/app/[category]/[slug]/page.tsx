@@ -7,6 +7,7 @@ import {
   getArticleParams,
   getArticlesByCategory,
 } from "@/lib/articles";
+import { resolveArticleLink } from "@/lib/sources";
 import type { CategorySlug } from "@/types/content";
 
 export function generateStaticParams() {
@@ -43,6 +44,7 @@ export default function ArticlePage({
   const sameCategory = getArticlesByCategory(cat.slug).filter(
     (a) => a.id !== article.id,
   );
+  const link = resolveArticleLink(article);
 
   return (
     <>
@@ -85,10 +87,16 @@ export default function ArticlePage({
             attribution={article.attribution}
             documentNote={article.documentNote}
             size="lg"
-            href={article.url || undefined}
-            hrefLabel="Read full source"
+            href={link.href}
+            hrefLabel={link.label}
             archiveHref={article.archiveUrl}
           />
+
+          {link.note && (
+            <p className="mt-5 font-sans text-[13px] leading-relaxed text-ash">
+              {link.note}
+            </p>
+          )}
 
           <div className="mt-12 border-t border-rule pt-6 font-sans text-[13px] leading-relaxed text-moss">
             <p>
